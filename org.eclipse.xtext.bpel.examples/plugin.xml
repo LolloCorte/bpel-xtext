@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.bpel.common.ui.embeddedEditors">
+      <editor
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            id="org.xtext.example.mydsl.ui.bridge.xtexteditor"
+            name="Xtext-Editor">
+      </editor>
+      <editor
+            class="org.eclipse.xtext.example.arithmetics.ui.ArithmeticsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            id="org.eclipse.xtext.example.arithmetics.xtexteditor"
+            name="Arithmetics-Editor">
+      </editor>
+      <editor
+            class="org.eclipse.xtext.example.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            id="org.eclipse.xtext.example.domainmodel.xtexteditor"
+            name="Domainmodel-Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.ui.expressionEditors">
+      <editor
+            class="org.eclipse.xtext.bpel.examples.greeting.GreetingXtextExpressionEditor"
+            expressionLanguage="http://www.xtext.org/example/mydsl/MyDsl"
+            label="Greeting Expression (Xtext Editor)">
+      </editor>
+      <editor
+            class="org.eclipse.xtext.bpel.examples.arithmetics.ArithmeticsXtextExpressionEditor"
+            expressionLanguage="http://www.eclipse.org/Xtext/example/Arithmetics"
+            label="Arithmetics Expression (Xtext Editor)">
+      </editor>
+      <editor
+            class="org.eclipse.xtext.bpel.examples.domainmodel.DomainmodelXtextExpressionEditor"
+            expressionLanguage="http://www.example.xtext/Domainmodel"
+            label="Domainmodel Expression (Xtext Editor)">
+      </editor>
+   </extension>
+
+</plugin>

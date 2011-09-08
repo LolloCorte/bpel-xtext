@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<definitions name="CopyProcess"
+        targetNamespace="CopyProcess"
+        xmlns:tns="CopyProcess"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:p="http://www.w3.org/2001/XMLSchema">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of types participating in this BPEL process 
+     The BPEL Designer will generate default request and response types
+     but you can define or import any XML Schema type and use them as part 
+     of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <types>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+                targetNamespace="CopyProcess" 
+                xmlns="http://www.w3.org/2001/XMLSchema">
+
+            <element name="CopyProcessRequest">
+                <complexType>
+                    <sequence>
+                        <element name="input" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="CopyProcessResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="NewOperation">
+            	<complexType>
+            		<sequence>
+
+            			<element name="in" type="string"></element>
+            		</sequence>
+            	</complexType>
+            </element>
+            <element name="NewOperationResponse">
+            	<complexType>
+            		<sequence>
+
+            			<element name="out" type="string"></element>
+            		</sequence>
+            	</complexType>
+            </element>
+        </schema>
+    </types>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="CopyProcessRequestMessage">
+        <part name="payload" element="tns:CopyProcessRequest"/>
+        <part name="name" type="p:string"></part>
+    </message>
+    <message name="CopyProcessResponseMessage">
+        <part name="payload" element="tns:CopyProcessResponse"/>
+    </message>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+
+    <!-- portType implemented by the CopyProcess BPEL process -->
+    <message name="NewOperationRequest">
+    	<part name="parameters" element="tns:NewOperation"></part>
+    </message>
+    <message name="NewOperationResponse">
+    	<part name="parameters" element="tns:NewOperationResponse"></part>
+    </message>
+    <portType name="CopyProcess">
+        <operation name="process">
+            <input  message="tns:CopyProcessRequestMessage" />
+            <output message="tns:CopyProcessResponseMessage"/>
+        </operation>
+    </portType>   
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="CopyProcess">
+        <plnk:role name="CopyProcessProvider" portType="tns:CopyProcess"/>
+    </plnk:partnerLinkType>
+    
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <portType name="NewTestPortType">
+    	<operation name="NewOperation">
+    		<input message="tns:NewOperationRequest"></input>
+    		<output message="tns:NewOperationResponse"></output>
+    	</operation>
+    </portType>
+    <binding name="CopyProcessBinding" type="tns:CopyProcess">
+    	<soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http" />
+    	<operation name="process">
+    		<soap:operation
+    			soapAction="CopyProcess/process" />
+    		<input>
+    			<soap:body use="literal" />
+    		</input>
+    		<output>
+    			<soap:body use="literal" />
+    		</output>
+    	</operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="NewBinding" type="tns:NewTestPortType">
+    	<operation name="NewOperation">
+    		<input></input>
+    		<output></output>
+    	</operation>
+    </binding>
+    <service name="CopyProcessService">
+    	<port name="CopyProcessPort" binding="tns:CopyProcessBinding">
+    		<soap:address location="http://localhost:8080/CopyProcess" />
+    	</port>
+    </service>
+    <service name="NewTestService">
+    	<port name="NewPort" binding="tns:NewBinding">
+    		<soap:address location="http://www.example.org/" />
+    	</port>
+    </service>
+</definitions>

@@ -1,0 +1,6 @@
+*~
+.metadata/
+CVS/
+bin/
+*.bpel.log
+*.bpel.out.xml
