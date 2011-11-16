@@ -4,7 +4,11 @@
 package org.eclipse.xtext.example.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.bpel.expression.editor.occurrences.NullMarkOccurrenceActionContributor;
+import org.eclipse.xtext.ui.editor.actions.IActionContributor;
 
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -14,5 +18,11 @@ public class DomainmodelUiModule extends org.eclipse.xtext.example.ui.AbstractDo
 	public DomainmodelUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
-	
+
+	@Override
+	public void configureMarkOccurrencesAction(Binder binder) {
+		// see http://www.eclipse.org/forums/index.php/mv/msg/236955/719364/
+		binder.bind(IActionContributor.class).annotatedWith(Names.named("markOccurrences"))
+				.to(NullMarkOccurrenceActionContributor.class);
+	}
 }
