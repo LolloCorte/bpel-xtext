@@ -9,11 +9,6 @@
             name="Xtext-Editor">
       </editor>
       <editor
-            class="org.eclipse.xtext.example.arithmetics.ui.ArithmeticsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            id="org.eclipse.xtext.example.arithmetics.xtexteditor"
-            name="Arithmetics-Editor">
-      </editor>
-      <editor
             class="org.eclipse.xtext.example.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             id="org.eclipse.xtext.example.domainmodel.xtexteditor"
             name="Domainmodel-Editor">
@@ -25,11 +20,6 @@
             class="org.eclipse.xtext.bpel.examples.greeting.GreetingXtextExpressionEditor"
             expressionLanguage="http://www.xtext.org/example/mydsl/MyDsl"
             label="Greeting Expression (Xtext Editor)">
-      </editor>
-      <editor
-            class="org.eclipse.xtext.bpel.examples.arithmetics.ArithmeticsXtextExpressionEditor"
-            expressionLanguage="http://www.eclipse.org/Xtext/example/Arithmetics"
-            label="Arithmetics Expression (Xtext Editor)">
       </editor>
       <editor
             class="org.eclipse.xtext.bpel.examples.domainmodel.DomainmodelXtextExpressionEditor"

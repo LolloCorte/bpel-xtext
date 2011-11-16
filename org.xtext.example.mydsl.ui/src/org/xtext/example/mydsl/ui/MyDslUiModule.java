@@ -12,10 +12,4 @@ public class MyDslUiModule extends org.xtext.example.mydsl.ui.AbstractMyDslUiMod
 	public MyDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
-	
-//	public com.google.inject.Provider<org.eclipse.xtext.ui.editor.model.XtextDocumentProvider> provideXtextDocumentProvider() {
-//		return MyDslExpressionDocumentProvider.getProvider();
-//	}
-	
-
 }
