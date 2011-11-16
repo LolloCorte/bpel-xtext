@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Xtext Domainmodel Example 
+Bundle-Name: Xtext Domainmodel Example
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Version: 1.0.2.qualifier
 Bundle-SymbolicName: org.eclipse.xtext.example.domainmodel; singleton:=true
@@ -14,8 +14,7 @@ Require-Bundle: org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.xtext.util;bundle-version="1.0.1",
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.antlr.runtime;bundle-version="[3.0.0,3.0.2)",
- org.eclipse.xtext.xtend;bundle-version="1.0.1",
+ org.antlr.runtime,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
  org.eclipse.emf.mwe2.launch;bundle-version="1.0.1";resolution:=optional
 Export-Package: org.eclipse.xtext.example,
@@ -26,6 +25,8 @@ Export-Package: org.eclipse.xtext.example,
  org.eclipse.xtext.example.parser.antlr,
  org.eclipse.xtext.example.parser.antlr.internal,
  org.eclipse.xtext.example.services,
- org.eclipse.xtext.example.validation
+ org.eclipse.xtext.example.validation,
+ org.eclipse.xtext.example.scoping,
+ org.eclipse.xtext.example.formatting
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.log4j

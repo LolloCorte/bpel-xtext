@@ -71,6 +71,19 @@
         </page>
     </extension>
     <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="org.eclipse.xtext.example.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.xtext.example.Domainmodel"
+            name="Domainmodel">
+            <keywordReference id="org.eclipse.xtext.example.ui.keyword_Domainmodel"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
         point="org.eclipse.ui.keywords">
         <keyword
             id="org.eclipse.xtext.example.ui.keyword_Domainmodel"
@@ -136,7 +149,6 @@
             uriExtension="dmodel">
         </resourceServiceProvider>
     </extension>
-
 
 
 

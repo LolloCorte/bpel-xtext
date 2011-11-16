@@ -39,6 +39,5 @@ public class MyDslStandaloneSetupGenerated implements ISetup {
 
 
 
-
 	}
 }

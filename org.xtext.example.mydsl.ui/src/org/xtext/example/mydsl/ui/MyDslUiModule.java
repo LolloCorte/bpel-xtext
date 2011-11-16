@@ -4,8 +4,6 @@
 package org.xtext.example.mydsl.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.xtext.example.mydsl.ui.document.MyDslExpressionDocument;
-import org.xtext.example.mydsl.ui.document.MyDslExpressionDocumentProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -19,13 +17,5 @@ public class MyDslUiModule extends org.xtext.example.mydsl.ui.AbstractMyDslUiMod
 //		return MyDslExpressionDocumentProvider.getProvider();
 //	}
 	
-	public com.google.inject.Provider<org.eclipse.xtext.ui.editor.model.XtextDocument> provideXtextDocument() {
-		return MyDslExpressionDocument.getProvider();
-	}
-	
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
-	public Class<? extends org.eclipse.xtext.ui.editor.model.XtextDocumentProvider> bindXtextDocumentProvider() {
-		return MyDslExpressionDocumentProvider.class;
-	}
 
 }
